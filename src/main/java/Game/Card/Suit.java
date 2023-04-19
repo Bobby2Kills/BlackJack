@@ -1,3 +1,3 @@
 package Game.Card;
 
-public enum Suit {HEARTS, CLUBS, Diamonds, Spades}
+public enum Suit {HEARTS, CLUBS, DIAMONDS, SPADES}

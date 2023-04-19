@@ -1,8 +1,6 @@
 package Game.Card;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class Deck {
     private ArrayList<Card> deck;
@@ -46,6 +44,10 @@ public class Deck {
 
     public ArrayList<Card> getCards() {
         return deck;
+    }
+
+    public void shuffle() {
+        Collections.shuffle(deck, new Random());
     }
 
 }

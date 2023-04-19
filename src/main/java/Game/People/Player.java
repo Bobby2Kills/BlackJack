@@ -1,4 +1,4 @@
-package People;
+package Game.People;
 
 import Game.Card.Card;
 
