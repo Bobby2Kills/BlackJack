@@ -1,11 +1,18 @@
 import Game.Card.Deck;
+import Game.People.Hand;
+import Game.Game;
 
 public class Main {
 
     public static void main(String[] args){
-        Deck deck = new Deck(true);
-        deck.shuffle();
+        System.out.println("Get ready to play.........");
+        System.out.println(".................");
+        System.out.println("Blackjack!");
 
-        System.out.println(deck);
+        //Starts the game
+        Game blackjack = new Game();
+
+
     }
+
 }

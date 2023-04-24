@@ -24,6 +24,11 @@ public class Card {
         return rank + " of " + suit;
     }
 
+    public Card(Card card){
+        this.suit = card.getSuit();
+        this.rank = card.getRank();
+     }
+
 }
 
 
