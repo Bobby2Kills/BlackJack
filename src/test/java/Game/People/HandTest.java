@@ -17,14 +17,16 @@ class HandTest {
 
     private Deck discardDeck;
     private Hand hand;
-
-    private Card takeCard;
+    private Dealer dealer;
+    private Player player;
 
     @BeforeEach
     void setUp() {
         deck = new Deck(true);
         discardDeck = new Deck();
         hand = new Hand();
+        dealer = new Dealer();
+        player = new Player();
     }
 
     @Test
@@ -37,6 +39,13 @@ class HandTest {
     void takeCardFromDeckAddsOneCardToHand(){
         hand.takeCardFromDeck(deck);
         assertEquals(1, hand.getHand().size(), "The takeCardFromDeck method has not did not increase the hand-size by one");
+    }
+
+    @Test
+    void takeCardFromDeckAddsOneCardToDealerHand(){
+        //take those cards from the take into the player's hand.
+        dealer.getHand().takeCardFromDeck(deck);
+        assertEquals(1, dealer.getHand().getHand().size(), "The takeCardFromDeck method has not did not increase the dealer's hand-size by one");
     }
 
     @Test
@@ -69,16 +78,42 @@ class HandTest {
     }
 
     @Test
+    void theOneAceInPlayersHandShouldBeWorth11WhenDealerHas2Aces(){
+        deck = new Deck();
+        Card card1 = new Card(ACE, Suit.CLUBS);
+        Card card2 = new Card(ACE, Suit.HEARTS);
+        Card card3 = new Card(ACE, Suit.SPADES);
+
+        //Add the cards to deck
+        Card[] cards = {card1,card2, card3};
+        for (Card card : cards) {
+            deck.addCard(card);
+        }
+
+        IntStream.range(0,2)
+                .forEach(i -> dealer.getHand().takeCardFromDeck(deck));
+
+        player.getHand().takeCardFromDeck(deck);
+
+        assertEquals(11, player.getHand().calculatedValue(), "A player's solo ACE card does not value 11 if a dealer has two aces.");
+
+
+
+
+
+    }
+
+    @Test
     void differentCardsInAHandAddUpCorrectly(){
         deck = new Deck();
         Card card1 = new Card(KING, Suit.CLUBS);
         Card card2 = new Card(DEUCE, Suit.HEARTS);
         Card card3 = new Card(THREE, Suit.SPADES);
         Card card4 = new Card(SIX, Suit.DIAMONDS);
-        deck.addCard(card1);
-        deck.addCard(card2);
-        deck.addCard(card3);
-        deck.addCard(card4);
+        Card[] cards = {card1,card2, card3, card4};
+        for (Card card : cards) {
+            deck.addCard(card);
+        }
         IntStream.range(0,4)
                 .forEach(i -> hand.takeCardFromDeck(deck));
         assertEquals(21, hand.calculatedValue(), "A hand of KING, DEUCE, THREE and SIX should equal 21");

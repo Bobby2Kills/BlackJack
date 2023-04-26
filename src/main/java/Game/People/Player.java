@@ -11,10 +11,15 @@ import java.util.Scanner;
 
 public class Player extends Person {
 
-    Scanner input = new Scanner(System.in);
+
+        Scanner input = new Scanner(System.in);
+
+
+
 
     //Create a new Player
     public Player() {
+
 
         super.setName("Player");
     }
@@ -55,8 +60,11 @@ public class Player extends Person {
 
             //if they type any other number, assume they're standing
         }
-        else{
+        else if( decision == 2){
             System.out.println("You stand.");
+        }
+        else{
+            input.nextInt();
         }
 
     }

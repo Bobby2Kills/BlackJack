@@ -49,7 +49,7 @@ class DeckTest {
     @Test
     void shufflingTheDeckChangesTheOrderOfCards() {
         deck.shuffle();
-        assertNotEquals(deck2, deck.getCards(), "The shuffle function is not working as intended");
+        assertNotEquals(deck2.getCards(), deck.getCards(), "The shuffle function is not working as intended");
     }
 
     @Test
