@@ -49,6 +49,10 @@ public class Player extends Person {
         if (decision == 1){
             //hit the deck using the deck and discard deck
             this.hit(deck, discard);
+            if(this.getHand().calculatedValue() > 21) {
+                System.out.println("You're busted mate!");
+
+            }
             //return (exit the method) if they have blackjack or busted
             if(this.getHand().calculatedValue()>20){
                 return;
@@ -58,7 +62,6 @@ public class Player extends Person {
                 this.makeDecision(deck,discard);
             }
 
-            //if they type any other number, assume they're standing
         }
         else if( decision == 2){
             System.out.println("You stand.");

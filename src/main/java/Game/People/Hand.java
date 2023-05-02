@@ -47,8 +47,8 @@ public class Hand {
         }
         //if we have a scenario where we have multiple aces, as may be the case of drawing 10,
         //go back and set each ace to 1 until get back under 21, if possible
-        if (value >21 && aceCount >0){
-            while(aceCount > 0 && value > 21){
+        if (value >21 && aceCount >1){
+            while(aceCount > 1 && value > 21){
                 aceCount --;
                 value -= 10;
             }

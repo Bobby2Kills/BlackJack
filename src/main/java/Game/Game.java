@@ -87,7 +87,6 @@ public class Game {
         player.makeDecision(deck, discarded);
 
         if(player.getHand().calculatedValue() > 21){
-            System.out.println("You're busted mate!");
             //count the losses
             losses ++;
             //start the round over

@@ -96,11 +96,24 @@ class HandTest {
         player.getHand().takeCardFromDeck(deck);
 
         assertEquals(11, player.getHand().calculatedValue(), "A player's solo ACE card does not value 11 if a dealer has two aces.");
+    }
 
+    @Test
+    void aFourCardHandWithTwoAcesShouldAddUpCorrectly(){
+            deck = new Deck();
+            Card card1 = new Card(ACE, Suit.HEARTS);
+            Card card2 = new Card(DEUCE, Suit.DIAMONDS);
+            Card card3 = new Card(SEVEN, Suit.CLUBS);
+            Card card4 = new Card(FOUR, Suit.DIAMONDS);
 
-
-
-
+            //Add the cards to deck
+            Card[] cards = {card1,card2, card3, card4};
+            for (Card card : cards) {
+                deck.addCard(card);
+            }
+            IntStream.range(0,4)
+                    .forEach(i -> hand.takeCardFromDeck(deck));
+            assertEquals(24, hand.calculatedValue(), "only the first ACE in a deck should be worth 11");
     }
 
     @Test
