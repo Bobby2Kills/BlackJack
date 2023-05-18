@@ -22,7 +22,7 @@ class PersonTest {
         deck = new Deck(true);
         discardDeck = new Deck();
         hand = new Hand();
-        player = new Player();
+        player = new Player("John");
 
 
 

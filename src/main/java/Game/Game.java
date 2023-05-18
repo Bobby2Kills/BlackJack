@@ -2,6 +2,10 @@ package Game;
 
 import Game.Card.*;
 import Game.People.*;
+import Game.Service.ApiService;
+import org.springframework.http.HttpHeaders;
+
+import java.util.Scanner;
 
 public class Game {
     //Declare variables needed for Game class
@@ -10,6 +14,8 @@ public class Game {
     private Dealer dealer;
     private Player player;
     private int wins, losses, pushes;
+
+    private ApiService apiService;
 
     /**
      * Constructor for Game, creates our variables and starts the Game
@@ -22,13 +28,24 @@ public class Game {
 
         //Create the People
         dealer = new Dealer();
-        player = new Player();
 
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your name:");
+        String playerName = scanner.nextLine();
+        player = new Player(playerName);
+//        scanner.close(); // Close the scanner after obtaining the player name, knowing it'll reopen in the player class.
+
+        // Create an instance of the ApiService (hitting the endpoints in the ApiController)
+        apiService = new ApiService();
+
+        //Save the player's name to the database
+        apiService.savePlayerName(playerName);
 
         //Shuffle the deck and start the first round
         deck.shuffle();
         startRound();
     }
+
 
     //This method will handle the logic for each round
     private void startRound(){

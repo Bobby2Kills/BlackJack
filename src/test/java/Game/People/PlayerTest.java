@@ -38,7 +38,7 @@ class PlayerTest {
         deck = new Deck(true);
         discard = new Deck();
         hand = new Hand();
-        player = new Player();
+        player = new Player("John");
         dealer = new Dealer();
     }
 
@@ -103,7 +103,7 @@ class PlayerTest {
         player.makeDecision(deck, discard);
 
 
-       String expectedOutput = "Would you like to 1) Hit or 2) Stand\r\nPlayer gets a card\r\nPlayer's hand looks like this:\r\nACE of SPADES - ACE of DIAMONDS - DEUCE of CLUBS -  Valued at: 14\r\nWould you like to 1) Hit or 2) Stand\r\n";
+       String expectedOutput = "Would you like to 1) Hit or 2) Stand\r\nJohn gets a card\r\nJohn's hand looks like this:\r\nACE of SPADES - ACE of DIAMONDS - DEUCE of CLUBS -  Valued at: 14\r\nWould you like to 1) Hit or 2) Stand\r\n";
        assertEquals(expectedOutput, outputStream.toString(), "opting to hit doesn't print correctly in the console");
     }
 
@@ -160,7 +160,7 @@ class PlayerTest {
 
 
 
-        String expectedOutput = "Would you like to 1) Hit or 2) Stand\r\nPlayer gets a card\r\nPlayer's hand looks like this:\r\nACE of SPADES - THREE of DIAMONDS - KING of CLUBS -  Valued at: 24\r\nYou're busted mate!\r\n";
+        String expectedOutput = "Would you like to 1) Hit or 2) Stand\r\nJohn gets a card\r\nJohn's hand looks like this:\r\nACE of SPADES - THREE of DIAMONDS - KING of CLUBS -  Valued at: 24\r\nYou're busted mate!\r\n";
         assertEquals(expectedOutput, outputStream.toString(), "player busting after a hit doesn't print correctly in the console");
     }
 }
