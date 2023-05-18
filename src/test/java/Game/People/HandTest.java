@@ -26,7 +26,7 @@ class HandTest {
         discardDeck = new Deck();
         hand = new Hand();
         dealer = new Dealer();
-        player = new Player();
+        player = new Player("John");
     }
 
     @Test

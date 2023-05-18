@@ -10,16 +10,19 @@ import java.util.Scanner;
  */
 
 public class Player extends Person {
+    private String playerName;
 
-
-        Scanner input = new Scanner(System.in);
-
-
+    Scanner input = new Scanner(System.in);
 
 
     //Create a new Player
-    public Player() {
-        super.setName("Player");
+    public Player(String playerName) {
+        super();
+        this.playerName = playerName;
+    }
+
+    public String getPlayerName() {
+        return playerName;
     }
 
     public void makeDecision(Deck deck, Deck discard) {

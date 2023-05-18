@@ -3,6 +3,8 @@ package Game;
 import Game.Card.*;
 import Game.People.*;
 
+import java.util.Scanner;
+
 public class Game {
     //Declare variables needed for Game class
     private Deck deck, discarded;
@@ -22,7 +24,11 @@ public class Game {
 
         //Create the People
         dealer = new Dealer();
-        player = new Player();
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter your name:");
+        String playerName = scanner.nextLine();
+        player = new Player(playerName);
 
 
         //Shuffle the deck and start the first round
