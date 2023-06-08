@@ -11,7 +11,7 @@ import org.springframework.web.client.RestTemplate;
 public class ApiService {
 
     public void savePlayerName(String playerName) {
-        String url = "http://localhost:7000/save?playerName=" + playerName;
+        String url = "http://localhost:8102/save?playerName=" + playerName;
 
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
