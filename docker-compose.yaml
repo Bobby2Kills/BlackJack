@@ -1,0 +1,41 @@
+version: "3"
+services:
+  mysql:
+      image: mysql:latest
+      container_name: mysqldb
+      environment:
+        - MYSQL_ROOT_PASSWORD=MyNewPass
+        - MYSQL_DATABASE=blackjack
+      ports:
+        - 3305:3306 # Map container port 3306 to host port 3305
+      networks:
+        - blackjack
+      healthcheck:
+        test: [ "CMD", "curl", "-f", "http://0.0.0.0:3306" ]
+        interval: 20s
+        timeout: 10s
+        retries: 3
+      deploy:
+        resources:
+          limits:
+            cpus: '1'
+            memory: 1g
+
+
+  springboot:
+    image: springbootmysql
+    ports:
+      - "8102:8102"  # Map container port 8102 to host port 8102
+    networks:
+      - blackjack
+    stdin_open: true
+    tty: true
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+networks:
+  blackjack:
+    driver: bridge
+
+
