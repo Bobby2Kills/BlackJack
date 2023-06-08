@@ -7,7 +7,7 @@ services:
         - MYSQL_ROOT_PASSWORD=MyNewPass
         - MYSQL_DATABASE=blackjack
       ports:
-        - 3337:3306 # Map container port 3306 to host port 3307
+        - 3305:3306 # Map container port 3306 to host port 3305
       networks:
         - blackjack
       healthcheck:
